@@ -36,18 +36,18 @@ pipeline {
       }
   
      
-    stage ('Sonar-Analysis') {
+    //stage ('Sonar-Analysis') {
         
-environment {
- def scannerhome = tool 'sonar-runner'
-    }
- steps {
-   withSonarQubeEnv ('sonar') 
-{
-sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=my-app-master -D sonar.projectName=my-app-master -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/all-plugins/my-app-master/src -D sonar.url=http://34.200.250.108:9000/sonar"
-   }
-}
-    } 
+//environment {
+ //def scannerhome = tool 'sonar-runner'
+    //}
+ //steps {
+   //withSonarQubeEnv ('sonar') 
+//{
+//sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=my-app-master -D sonar.projectName=my-app-master -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/all-plugins/my-app-master/src -D sonar.url=http://34.200.250.108:9000/sonar"
+   //}
+//}
+    //} 
         
    stage('Deploy to Tomcat'){
   steps {
