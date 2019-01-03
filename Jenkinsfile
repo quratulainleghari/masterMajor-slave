@@ -29,25 +29,25 @@ pipeline {
                     archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
                    junit '**/target/surefire-reports/*.xml' 
                    
-                 //  s3Upload consoleLogLevel: 'INFO', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 's3-bucket-jenkins', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-2', showDirectlyInBrowser: false, sourceFile: '**/target/surefire-reports/*.xml', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'arn:aws:s3:::s3-bucket-jenkins', userMetadata: []
+                 // s3Upload consoleLogLevel: 'INFO', dontWaitForConcurrentBuildCompletion: false, entries: [[bucket: 's3-bucket-jenkins', excludedFile: '', flatten: false, gzipFiles: false, keepForever: false, managedArtifacts: false, noUploadOnFailure: false, selectedRegion: 'us-east-2', showDirectlyInBrowser: false, sourceFile: '**/target/surefire-reports/*.xml', storageClass: 'STANDARD', uploadFromSlave: false, useServerSideEncryption: false]], pluginFailureResultConstraint: 'FAILURE', profileName: 'arn:aws:s3:::s3-bucket-jenkins', userMetadata: []
 
                }
            }
       }
   
      
-    //stage ('Sonar-Analysis') {
+    stage ('Sonar-Analysis') {
         
-//environment {
- //def scannerhome = tool 'sonar-runner'
-    //}
- //steps {
-   //withSonarQubeEnv ('sonar') 
-//{
-//sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=my-app-master -D sonar.projectName=my-app-master -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/all-plugins/my-app-master/src -D sonar.url=http://34.200.250.108:9000/sonar"
-   //}
-//}
-    //} 
+environment {
+ def scannerhome = tool 'sonar-runner'
+    }
+ steps {
+   withSonarQubeEnv ('sonar') 
+{
+sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=my-app-master -D sonar.projectName=my-app-master -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/all-plugins/my-app-master/src -D sonar.url=http://34.200.250.108:9000/sonar"
+   }
+}
+    } 
         
    stage('Deploy to Tomcat'){
   steps {
