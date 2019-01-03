@@ -21,7 +21,7 @@ pipeline {
       stage ('Compile-Package') {
             steps {
                 git "https://github.com/quratulainleghari/my-app.git"
-               sh 'mvn -f /var/lib/jenkins/workspace/all-plugins-pipeline/my-app-master package'
+               sh 'mvn -f /var/lib/jenkins/workspace/all-plugins/my-app-master package'
            
             }
           post {
@@ -44,7 +44,7 @@ environment {
  steps {
    withSonarQubeEnv ('sonar') 
 {
-sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=my-app-master -D sonar.projectName=my-app-master -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/all-plugins-pipeline/my-app-master/src -D sonar.url=http://34.200.250.108:9000/sonar"
+sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=my-app-master -D sonar.projectName=my-app-master -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/all-plugins/my-app-master/src -D sonar.url=http://34.200.250.108:9000/sonar"
    }
 }
     } 
