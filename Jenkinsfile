@@ -52,7 +52,7 @@ sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=my-app-master -D sonar.p
    stage('Deploy to Tomcat'){
   steps {
   sshagent(['3d0ff4fe-87e0-468b-9c6f-fbd6f291a57b']) {
-    sh "scp  /var/lib/jenkins/workspace/all-plugins-pipeline/my-app-master/target/*.war ubuntu@18.234.76.16:/opt/tomcat/apache-tomcat-8.5.37/webapps"
+    sh "scp  /var/lib/jenkins/workspace/all-plugins-pipeline/my-app-master/target/*.war ubuntu@34.232.51.140:/opt/tomcat/apache-tomcat-8.5.37/webapps"
      
     }
    
