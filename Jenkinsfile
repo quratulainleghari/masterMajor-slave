@@ -44,7 +44,7 @@ environment {
  steps {
    withSonarQubeEnv ('sonar') 
 {
-sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=my-app-master -D sonar.projectName=my-app-master -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/all-plugins/my-app-master/src -D sonar.url=http://34.200.250.108:9000/sonar"
+sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=my-app-master -D sonar.projectName=my-app-master -D sonar.projectVersion=1.0  -D sonar.web.host=sonar -D sonar.web.port=9000 -D sonar.sources=/var/lib/jenkins/workspace/all-plugins/my-app-master/src -D sonar.url=http://100.26.4.250:9000/sonar"
    }
 }
     } 
@@ -52,7 +52,7 @@ sh "${scannerhome}/bin/sonar-runner -D sonar.projectKey=my-app-master -D sonar.p
    stage('Deploy to Tomcat'){
   steps {
   sshagent(['3d0ff4fe-87e0-468b-9c6f-fbd6f291a57b']) {
-    sh "scp  /var/lib/jenkins/workspace/all-plugins-pipeline/my-app-master/target/*.war ubuntu@34.232.51.140:/opt/tomcat/apache-tomcat-8.5.37/webapps"
+    sh "scp  /var/lib/jenkins/workspace/all-plugins-pipeline/my-app-master/target/*.war ubuntu@18.235.1.247:/opt/tomcat/apache-tomcat-8.5.37/webapps"
      
     }
    
